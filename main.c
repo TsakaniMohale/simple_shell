@@ -13,8 +13,13 @@ int main(void)
 	char *command;
 	(void)n_chars;
 
-	printf("cisfun$ ");
-	n_chars = getline(&command, &n, stdin);
+	for(;1;)
+	{
+		printf("cisfun$ ");
+		n_chars = getline(&command, &n, stdin);
+
+		tokenization(command);
+	}
 
 	return (0);
 }
