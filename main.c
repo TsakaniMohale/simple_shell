@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 
 	for ( ; 1; )
 	{
-		if (is_interactive())
+		if (isatty(STDIN_FILENO))
 			printf("#cisfun$ ");
 
 		n_chars = getline(&command, &n, stdin);
