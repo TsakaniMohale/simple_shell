@@ -32,7 +32,7 @@ int main(int argc, char **argv)
 
 		n_chars = getline(&command, &n, stdin);
 		if (n_chars < 0)
-			exit(EXIT_FAILURE);
+			break;
 		if (command[n_chars - 1] == '\n')
 		{
 			command[n_chars - 1] = '\0';
