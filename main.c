@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 
 /**
  * main - Execusion of the program shell start.
@@ -10,15 +10,20 @@ int main(void)
 {
 	ssize_t n_chars;
 	size_t n;
-	char *command;
+	char *command = NULL;
+	const char *tokens_array[100] = {NULL, NULL};
 	(void)n_chars;
 
-	for(;1;)
+	for ( ; 1; )
 	{
 		printf("cisfun$ ");
 		n_chars = getline(&command, &n, stdin);
+		if (n_chars < 0)
+			exit(EXIT_FAILURE);
 
-		tokenization(command);
+		tokenization(command, tokens_array);
+		exec(tokens_array);
+		free(command);
 	}
 
 	return (0);
