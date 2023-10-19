@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 	for ( ; 1; )
 	{
 		if (is_interactive())
-			printf("cisfun$ ");
+			printf("#cisfun$ ");
 
 		n_chars = getline(&command, &n, stdin);
 		if (n_chars < 0)
@@ -36,8 +36,8 @@ int main(int argc, char **argv)
 
 		tokenization(command, tokens_array);
 		exec(tokens_array, argv);
-		free(command);
 	}
 
+	free (command);
 	return (0);
 }
