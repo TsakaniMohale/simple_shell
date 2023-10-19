@@ -3,11 +3,11 @@
 
 /**
  * is_interactive - Returns associated file descriptor
- * Returns: input(0) file descriptor
+ * Return: input(0) file descriptor
  */
-bool is_interactive()
+bool is_interactive(void)
 {
-	return (STDIN_FILENO);
+	return (isatty(STDIN_FILENO));
 }
 
 /**
@@ -25,19 +25,18 @@ int main(int argc, char **argv)
 	const char *tokens_array[100] = {NULL, NULL};
 	(void)argc;
 
-	if (is_interactive())
+	for ( ; 1; )
 	{
-		for ( ; 1; )
-		{
+		if (is_interactive())
 			printf("cisfun$ ");
-			n_chars = getline(&command, &n, stdin);
-			if (n_chars < 0)e
-				xit(EXIT_FAILURE);
-			
-			tokenization(command, tokens_array);
-			exec(tokens_array, argv);
-			free(command);
-		}
+
+		n_chars = getline(&command, &n, stdin);
+		if (n_chars < 0)
+			exit(EXIT_FAILURE);
+
+		tokenization(command, tokens_array);
+		exec(tokens_array, argv);
+		free(command);
 	}
 
 	return (0);
