@@ -38,6 +38,6 @@ int main(int argc, char **argv)
 		exec(tokens_array, argv);
 	}
 
-	free (command);
+	free(command);
 	return (0);
 }
