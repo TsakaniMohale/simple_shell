@@ -7,7 +7,7 @@
  *
  */
 
-void exec(const char **cmd, **argv)
+void exec(const char **cmd, char **argv)
 {
 	int status;
 	pid_t child_pid = fork();
@@ -21,7 +21,7 @@ void exec(const char **cmd, **argv)
 		if (cmd)
 		{
 			/*Executing the first string from the command*/
-			if (execve(cmd[0], (char * const*)cmd[0], NULL) == -1)
+			if (execve(cmd[0], (char * const*)cmd, NULL) == -1)
 			{
 				perror(argv[0]);
 				exit(EXIT_FAILURE);
