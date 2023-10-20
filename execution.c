@@ -21,6 +21,7 @@ void exec(const char **cmd, char **argv)
 	{
 		if (cmd)
 		{
+			builtin_cmd((char **)cmd);
 			path = _path(cmd[0]);
 			if (path == NULL)
 			{

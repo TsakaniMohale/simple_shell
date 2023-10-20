@@ -23,5 +23,11 @@ extern char **environ;
 void tokenization(char *input, const char *tokens_array[]);
 void exec(const char **cmd, char **argv);
 char *_path(const char *cmd);
+char *_getenv(const char *var_name);
+int builtin_cmd(char **array);
+void exit_shell(char **array);
+void _env(void);
+int mysetenv(int argc, char **argv);
+int myunsetenv(int argc, char **argv);
 
 #endif
