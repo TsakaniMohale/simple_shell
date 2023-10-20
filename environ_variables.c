@@ -8,8 +8,8 @@ void _env(void)
 {
 	int i;
 	char **env = environ;
-	
-	for (i = 0 ; env[i] != NULL ; i++)
+
+	for (i = 0; env[i] != NULL; i++)
 	{
 		write(1, env[i], strlen(env[i]));
 		write(STDOUT_FILENO, "\n", 1);
@@ -48,6 +48,7 @@ void exit_shell(char **array)
 	if (array[1])
 	{
 		int status = atoi(array[1]);
+
 		if (status >= 0)
 		{
 			/*free(array);*/
@@ -98,7 +99,7 @@ int myunsetenv(int argc, char **argv)
 		write(STDERR_FILENO, "Incorrect number of arguments\n", 30);
 		return (1);
 	}
-	
+
 	if (unsetenv(argv[1]) != 0)
 	{
 		write(STDERR_FILENO, "Failed to unset environment variable\n", 37);

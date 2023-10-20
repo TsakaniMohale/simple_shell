@@ -19,11 +19,11 @@ int builtin_cmd(char **array)
 	}
 	else if (strcmp(array[0], "setenv") == 0)
 	{
-		return mysetenv(3, array);
+		return (mysetenv(3, array));
 	}
 	else if (strcmp(array[0], "unsetenv") == 0)
 	{
-		return myunsetenv(2, array);
+		return (myunsetenv(2, array));
 	}
 	return (1);
 }
