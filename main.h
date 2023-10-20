@@ -22,5 +22,6 @@ extern char **environ;
 /*Functions prototypes*/
 void tokenization(char *input, const char *tokens_array[]);
 void exec(const char **cmd, char **argv);
+char *_path(const char *cmd);
 
 #endif

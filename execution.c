@@ -11,6 +11,7 @@ void exec(const char **cmd, char **argv)
 {
 	int status;
 	pid_t child_pid = fork();
+	char *path;
 
 	if (child_pid == -1)
 	{
@@ -20,12 +21,20 @@ void exec(const char **cmd, char **argv)
 	{
 		if (cmd)
 		{
-			/*Executing the first string from the command*/
-			if (execve(cmd[0], (char * const*)cmd, NULL) == -1)
+			path = _path(cmd[0]);
+			if (path == NULL)
 			{
 				perror(argv[0]);
 				exit(EXIT_FAILURE);
 			}
+
+			if (execve(path, (char * const*)cmd, NULL) == -1)
+			{
+				perror(argv[0]);
+				exit(EXIT_FAILURE);
+			}
+			free(path);
+			path = NULL;
 		}
 	} else
 	{
