@@ -81,8 +81,8 @@ int main(int argc, char **argv)
 
 		tokenization(command, tokens_array);
 		exec(tokens_array, argv);
+		free(command);
 	}
 
-	free(command);
 	return (0);
 }
